@@ -1,0 +1,29 @@
+services: 
+  kafka:
+   image: apache/kafka:4.2.0
+   container_name: kafka
+   ports:
+    - "9092:9092"
+
+
+  # comando para criar o tópico
+#docker exec -it kafka /opt/kafka/bin/kafka-topics.sh --create --topic pagamentos --bootstrap-server localhost:9092 --partitions 2 --replication-factor 1
+
+  # comando para listar todos os tópicos
+#docker exec -it kafka /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+  # comando para criar um producer
+#docker exec -it kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic pagamentos
+
+  # uma venda
+#{"id_venda":1001,"loja":"GO01","produto":"Leite","quantidade":2,"valor_total":11.98}
+
+  # comando para criar um consumer
+#docker exec -it kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic pagamentos --from-beginning
+
+  # verificar as partições
+#docker exec -it kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic vendas --from-beginning --property print.partition=true --property print.offset=true
+
+  # criar consumer pertencente a um grupo
+#docker exec -it kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic pagamentos --group loja sede
+

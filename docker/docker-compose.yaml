@@ -1,0 +1,13 @@
+services:
+  web:
+    image: nginx
+    ports: 
+      - "8080:80"
+
+  banco:
+    image: mysql:9
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: escola
+    ports: 
+     - "3307:3306"
